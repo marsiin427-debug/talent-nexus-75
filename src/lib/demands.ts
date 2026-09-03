@@ -24,7 +24,7 @@ export type Agency = {
   business_address: string;
   phone: string;
   dofe_license_number: string;
-  logo_image?: string | null;
+  logo_image?: string | null | undefined;
 };
 
 export type Demand = {
@@ -32,14 +32,14 @@ export type Demand = {
   country: string;
   employer_name: string;
   lt_number: string;
-  notes?: string | null;
+  notes?: string | null | undefined;
   status: "open" | "closed";
   date_received: string;
   expiry_date: string;
-  application_deadline?: string | null;
-  interview_date?: string | null;
-  interview_venue?: string | null;
-  contract_duration_years?: number | null;
+  application_deadline?: string | null | undefined;
+  interview_date?: string | null | undefined;
+  interview_venue?: string | null | undefined;
+  contract_duration_years?: number | null | undefined;
   free_accommodation: boolean;
   free_food: boolean;
   free_medical: boolean;
@@ -541,7 +541,7 @@ export const demands: Demand[] = raw.map((r, i) => ({
       file_path: "demand-letter",
     },
   ],
-  agency: agencies[r.agencyIndex],
+  agency: agencies[r.agencyIndex]!,
   applicants_count: r.applicants_count,
   josh_count: r.josh_count,
   created_at: isoDaysAgo(r.daysAgo),
